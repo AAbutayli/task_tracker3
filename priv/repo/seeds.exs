@@ -9,3 +9,9 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias TaskTracker3.Repo
+alias TaskTracker3.Users.User
+
+Repo.insert!(%User{email: "alice@example.com", admin: true})
+Repo.insert!(%User{email: "bob@example.com", admin: false})
