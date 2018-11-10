@@ -8,9 +8,9 @@ defmodule TaskTracker3.Tasks.Task do
     field :done, :boolean, default: false
     field :name, :string
     field :time, :integer
-    field :user_id, :id
 
-    has_many :users, TaskTracker3.Users.User
+
+    belongs_to :user, TaskTracker3.Users.User
 
     timestamps()
   end
@@ -18,7 +18,8 @@ defmodule TaskTracker3.Tasks.Task do
   @doc false
   def changeset(task, attrs) do
     task
-    |> cast(attrs, [:name, :desc, :done, :time])
-    |> validate_required([:name, :desc, :done, :time])
+    |> cast(attrs, [:name, :desc, :done, :user_id])
+    |> unique_constraint(:name)
+    |> validate_required([:name, :desc])
   end
 end

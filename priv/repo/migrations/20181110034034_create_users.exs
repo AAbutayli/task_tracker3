@@ -3,11 +3,11 @@ defmodule TaskTracker3.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add :email, :string
+      add :email, :string, null: false
       add :admin, :boolean, default: false, null: false
 
       timestamps()
     end
-
+    create index(:users, [:email], unique: true)
   end
 end

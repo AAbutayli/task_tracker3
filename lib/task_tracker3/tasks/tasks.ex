@@ -101,4 +101,9 @@ defmodule TaskTracker3.Tasks do
   def change_task(%Task{} = task) do
     Task.changeset(task, %{})
   end
+
+  def get_user_by_email(email) do
+    Repo.get_by(User, email: email)
+  end
 end
+

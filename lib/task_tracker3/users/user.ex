@@ -6,6 +6,7 @@ defmodule TaskTracker3.Users.User do
   schema "users" do
     field :admin, :boolean, default: false
     field :email, :string
+    has_many :tasks, TaskTracker3.Tasks.Task
 
     timestamps()
   end
@@ -13,7 +14,8 @@ defmodule TaskTracker3.Users.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:email, :admin])
-    |> validate_required([:email, :admin])
+    |> cast(attrs, [:email])
+    |> unique_constraint(:email)
+    |> validate_required([:email])
   end
 end

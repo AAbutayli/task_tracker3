@@ -15,3 +15,7 @@ alias TaskTracker3.Users.User
 
 Repo.insert!(%User{email: "alice@example.com", admin: true})
 Repo.insert!(%User{email: "bob@example.com", admin: false})
+
+
+alias TaskTracker3.Tasks.Task
+Repo.insert!(%Task{name: "Hi", desc: "HI HI ", done: false, time: 5})
