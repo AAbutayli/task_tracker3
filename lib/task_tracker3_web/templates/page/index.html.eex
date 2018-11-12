@@ -1,8 +1,9 @@
 <div class="row">
   <div class="col-12">
     <h1>Welcome to Task Tracker 3</h1>
-    <script>
-      window.products = <%= raw Jason.encode!(@tasks) %>;
-    </script>
   </div>
 </div>
+
+<script>
+  window.tasks = <%= raw Jason.encode!(@tasks) %>;
+</script>

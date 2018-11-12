@@ -20,10 +20,11 @@ defmodule TaskTracker3Web.Router do
   end
 
   # Other scopes may use custom stacks.
-   scope "/api", TaskTracker3Web do
+   scope "/api/v1", TaskTracker3Web do
      pipe_through :api
-
+     
+     resources "/sessions", SessionController, only: [:create]
      resources "/users", UserController, except: [:new, :edit]
-     resources "/tasks", ProductController, except: [:new, :edit]
+     resources "/tasks", TaskController, except: [:new, :edit]
    end
 end
